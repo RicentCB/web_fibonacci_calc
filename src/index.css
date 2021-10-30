@@ -11,3 +11,83 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Setear Estilos genericos de etiequetas a utilizar en el sitio */
+div{
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+h1, h2, h3, h4{
+  margin: 0;
+  font-weight: bold;
+}
+h5, h6{
+  margin: 0;
+  font-weight: bold;
+}
+h5{
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+p,a,div{
+  margin: 0;
+}
+
+input, textarea{
+  outline: none;
+  appearance: none;
+  border: none;
+}
+select{
+  border: none;
+  outline: none;
+}
+select:focus-visible{
+  border: none;
+  outline: none;
+}
+h1{
+  font-size: 3.2rem; 
+}
+h2{
+  font-size: 2.7rem; 
+}
+h3{
+  font-size: 2rem;
+}
+p,a{
+  font-size: 1.3rem;
+}
+
+button{
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+h1,h2,h3{
+  font-family: 'Lobster Two', cursive;
+}
+
+h4,h5,h6,p,a,button,input{
+  font-family: 'Overlock', cursive;
+}
+@media only screen and (min-width:768px) {
+  h1{
+    font-size: 3.7rem; 
+  }
+  h2{
+    font-size: 3rem; 
+  }
+  h3{
+    font-size: 2.2rem;
+  }
+  p,a{
+    font-size: 1.45rem;
+  }
+}
