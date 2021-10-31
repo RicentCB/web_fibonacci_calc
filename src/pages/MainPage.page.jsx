@@ -1,13 +1,24 @@
+// Styled components
 import {
-    MainContainer
+  BackgroundContainer,
+  MainContainer,
+  BackgroundImage,
+  CardWrapper
 } from './MainPage.styled'
+// Asets
+import BackImg from '../assets/goldenRatioBig.jpg';
 
 const MainPage = () => {
-    return (
-        <MainContainer>
-            ''
-        </MainContainer>
-    )
+  return (
+      <MainContainer>
+        <BackgroundContainer>
+          <BackgroundImage src={BackImg}/>
+        </BackgroundContainer>
+        <CardWrapper>
+          ''
+        </CardWrapper>
+      </MainContainer>
+  )
 }
 
 export default MainPage
