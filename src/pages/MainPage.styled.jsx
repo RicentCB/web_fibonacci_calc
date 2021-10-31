@@ -18,6 +18,7 @@ export const MainContainer = styled.main`
     height: 100vh;
     width: 100vw;
     position: relative;
+    min-height: 600px;
 `;
 export const BackgroundContainer = styled.div`
     position: absolute;
@@ -47,6 +48,9 @@ export const CardWrapper = styled(MainWrapper)`
     }
     @media only screen and (min-width: 1024px){
         padding: 40px 25vw;
+    }
+    @media only screen and (min-width: 1920px){
+        padding: 40px 30vw;
     }
 `;
 export const CardContainer = styled.div`
