@@ -6,9 +6,9 @@ La aplicación esta desarollado con ayuda de la libreria para front-end **React 
 
 Ejemplo de la interfaz:
 
-<img src="screen.jpg" width="100%">
+<img src="screenTest.jpg" width="100%">
 
-Visualización del proyecto en este [enlace]()
+Visualización del proyecto, con ultimo deploy [enlace](https://web-fibonacci.vercel.app/)
 
 ## Para inicializar el proyecto
 
@@ -16,7 +16,7 @@ Se debe tener instalado, el manejador de versiones [**git**](https://git-scm.com
 
 1. Clonar el repositorio
     ```bash
-        git clone https
+        git clone https://github.com/RicentCB/web_fibonacci_calc.git
     ```
 2. Instalar las dependecias
     ```bash
