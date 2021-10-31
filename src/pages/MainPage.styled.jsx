@@ -2,6 +2,16 @@ import styled from '@emotion/styled';
 // Componentes Generales
 import MainWrapper from './../common/MainWrapper.styled'
 // Paleta de Colores
+import {
+    ColorAccent,
+    ColorDark1,
+    ColorLight1,
+    ColorLight2,
+    ColorShadow1,
+    ColorShadow2,
+    ColorShadow3,
+    ColorShadow4
+} from '../common/pallet.const';
 
 // Creaacion de styled components
 export const MainContainer = styled.main`
@@ -42,12 +52,12 @@ export const CardWrapper = styled(MainWrapper)`
 export const CardContainer = styled.div`
     height: 100%;
     width: 100%;
-    background-color: rgba(83, 83, 83, 0.4);
+    background-color: ${ColorShadow1};
     border-radius: 20px;
     backdrop-filter: blur(25px);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 15px rgba(39, 39, 39, 0.25);
+    box-shadow: 0 0 15px ${ColorShadow2};
     justify-content: space-between;
     padding: 40px 20px;
     max-height: 550px;
@@ -66,8 +76,8 @@ export const CardContainer = styled.div`
 export const CardTitle = styled.h1`
     text-align: center;
     font-weight: 400;
-    color: #ffffff;
-    text-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
+    color: ${ColorLight1};
+    text-shadow: 0 0 5px ${ColorShadow3};
 `;
 export const InfoWrapper = styled.div`
     width: 100%;
@@ -75,8 +85,8 @@ export const InfoWrapper = styled.div`
     flex-direction: column;
 `;
 export const InfoContainer = styled.p`
-    color: #f1f1f1;
-    text-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
+    color: ${ColorLight2};
+    text-shadow: 0 0 5px ${ColorShadow3};
     margin-bottom: 30px;
     span{
         font-size: 1.5rem;
@@ -89,7 +99,7 @@ export const InfoContainer = styled.p`
         }
         &.result{
             font-size: 1.8rem;
-            border-bottom: 2px solid #f1f1f1;
+            border-bottom: 2px solid ${ColorLight2};
         }
     }
 `;
@@ -97,22 +107,22 @@ export const LabelInput = styled.label`
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #f1f1f1;
+    color: ${ColorLight2};
 `;
 export const NumberInput = styled.input`
     font-size: 1.4rem;
     padding: 8px 12px;
-    color: #4b4b4b;
+    color: ${ColorDark1};
 `;
 export const MainButtonWrapper = styled.div`
     display: block;
-    border: 2px solid #ffffff;
+    border: 2px solid ${ColorLight1};
     background-color: transparent;
-    box-shadow: 0 0 10px rgba(71, 71, 71, 0.75);
+    box-shadow: 0 0 10px ${ColorShadow3};
     transition: all ease-in-out 0.25s;
     width: 100%;
     &:hover{
-        background-color: #582FED;
+        background-color: ${ColorAccent};
         transform: scale(1.05);
     }
     @media only screen and (min-width: 768px){
@@ -124,10 +134,10 @@ export const MainButtonWrapper = styled.div`
     }
 `;
 export const MainButton = styled.button`
-    color: #ffffff;
+    color: ${ColorLight1};
     font-weight: bold;
     text-transform: uppercase;
-    text-shadow: 0 0 5px rgba(165, 165, 165, 0.1);
+    text-shadow: 0 0 5px ${ColorShadow4};
     padding: 10px 15px;
     height: 100%;
     width: 100%;
