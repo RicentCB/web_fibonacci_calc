@@ -19,7 +19,11 @@ import BackImg from '../assets/spiral.jpg';
 
 const MainPage = () => {
   // Alamacenar valor de numero
-  const [number, setNumber] = useState(0);
+  const [fibonacci, setFibonacci] = useState({
+    number: 0,
+    isFibonacci: false,
+    showResult: false
+  });
 
   // Agregar animacion al "Card" Principal, escuchando los movimientos del cursor
   useEffect(() => {
@@ -50,7 +54,7 @@ const MainPage = () => {
 
   // Funcion para calcular si un numero pertenece a fibonacci
   // Algoritmo de: https://www.geeksforgeeks.org/check-number-fibonacci-number/
-  
+
   // Metodo para encontrar si un numero es cuadrado perfecto
   const isPerfectSquare = x => {
     const sqrt = Number.parseInt(Math.sqrt(x));
@@ -67,29 +71,39 @@ const MainPage = () => {
   //--------------------------------------------------------
 
   // Escribir un numero en el input
-  const onKeyNumber = e =>{
-    if(e.key !== 'Enter'){
+  const onKeyNumber = e => {
+    if (e.key !== 'Enter') {
       // Alamacenar numero
-      setNumber(e.target.value);
-    }else{
+      const number = Number.parseInt(e.target.value);
+      setFibonacci({
+        ...fibonacci,
+        number,
+        showResult: false,
+      });
+    } else {
       // Se presiono enter, calcular si es fibonacci
-      const isFibonacci = isThisFibonacci(number);
-      console.log(isFibonacci);
+      const isFibonacci = isThisFibonacci(fibonacci.number);
+      setFibonacci({
+        ...fibonacci,
+        isFibonacci,
+        showResult: true,
+      });
     }
   }
 
   // Hacer click en el boton para calcular
   const onMainButtonClick = e => {
-    const isFibonacci = isThisFibonacci(number);
-    console.log(isFibonacci);
+    const isFibonacci = isThisFibonacci(fibonacci.number);
+    setFibonacci({
+      ...fibonacci,
+      isFibonacci,
+      showResult: true,
+    });
   }
 
   //--------------------------------------------------------
-  // Mostrar al usuario resultado final
-  //--------------------------------------------------------
-
-
   // Creacion de componente principal
+  //--------------------------------------------------------
   return (
     <MainContainer>
       <BackgroundContainer>
@@ -101,13 +115,19 @@ const MainPage = () => {
             Calculadora de Fibonacci
           </CardTitle>
           <InfoWrapper>
-            <InfoContainer>
-              La siguiente aplicación te ayduara a conocer si un número pertenece a la serie de Fibonacci
-            </InfoContainer>
+            {
+              fibonacci.showResult ?
+                <InfoContainer>
+                  El número <span>{fibonacci.number} {fibonacci.isFibonacci ? 'no' : ''} es fibonacci</span>
+                </InfoContainer>
+                : <InfoContainer>
+                  La siguiente aplicación te ayduara a conocer si un número pertenece a la serie de Fibonacci
+                </InfoContainer>
+            }
             <LabelInput>
-              Introduce un número a calcular:
+              Introduce{fibonacci.showResult ? ' otro ' : ' un '}número a calcular:
             </LabelInput>
-            <NumberInput type="number" placeholder="E.g 1, 2" onKeyUp={onKeyNumber}/>
+            <NumberInput type="number" placeholder="E.g 1, 2" onKeyUp={onKeyNumber} min="0" step="1"/>
           </InfoWrapper>
           <MainButtonWrapper>
             <MainButton onClick={onMainButtonClick}>
