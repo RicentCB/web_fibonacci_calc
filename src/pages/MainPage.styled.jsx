@@ -79,11 +79,17 @@ export const InfoContainer = styled.p`
     text-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
     margin-bottom: 30px;
     span{
+        font-size: 1.5rem;
         font-weight: bold;
-        font-size: 1.8rem;
-        border-bottom: 2px solid #f1f1f1;
         @media only screen and (min-width: 768px){
             font-size: 2.4rem;
+            &.result{
+                font-size: 2rem;
+            }
+        }
+        &.result{
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f1f1f1;
         }
     }
 `;

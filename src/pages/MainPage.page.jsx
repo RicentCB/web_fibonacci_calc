@@ -75,6 +75,37 @@ const MainPage = () => {
   //--------------------------------------------------------
   // Eventos por el usuario
   //--------------------------------------------------------
+
+  // Funcion para valida numero
+  const validateNumber = number => {
+    // Validacion de numeros enteros
+    if (!Number.isInteger(number)) {
+      setWarning({
+        message: ' solo se permiten números enteros',
+        show: true
+      });
+      return false;
+    }
+    // Validacion de numero positivo
+    if (number <= 0) {
+      setWarning({
+        message: ' solo se permiten números mayores a cero',
+        show: true
+      });
+      return false;
+    }
+    // ----------------------------------
+    // Paso todas las validaciones
+    // ----------------------------------
+    // Ocultar advertencias
+    setWarning({
+      ...warning,
+      show: false,
+    });
+    // Retornar validacion
+    return true;
+  }
+
   // Mostrar resultado al usuaruo
   const showResultUser = () => {
     const number = Number(fibonacci.number);
@@ -91,31 +122,21 @@ const MainPage = () => {
     if (e.key !== 'Enter') {
       // Alamacenar numero
       const number = Number(e.target.value);
-      if(!Number.isInteger(number)){
-        setWarning({
-          message: 'Solo se permiten numeros enteros',
-          show: true
+      // Validar número de entrada
+      if (validateNumber(number)) {
+        // Guardar numero
+        setFibonacci({
+          ...fibonacci,
+          number,
+          showResult: false,
         });
-        return;
       }
-      // Paso todas las validaciones
-      // Ocultar advertencias
-      setWarning({
-        ...warning,
-        show: false,
-      });
-      // Guardar numero
-      setFibonacci({
-        ...fibonacci,
-        number,
-        showResult: false,
-      });
-    } else {
-      // Se presiono enter, calcular si es fibonacci
+    } else {// Se presiono enter, mostrar si es fibonacci
+      // Validar número de entrada
       showResultUser();
     }
   }
-  
+
   // Hacer click en el boton para calcular
   const onMainButtonClick = e => {
     showResultUser();
@@ -136,18 +157,29 @@ const MainPage = () => {
           </CardTitle>
           <InfoWrapper>
             {
-              fibonacci.showResult ?
+              warning.show ?
                 <InfoContainer>
-                  El número <span>{fibonacci.number} {!fibonacci.isFibonacci ? 'no' : ''} es fibonacci</span>
-                </InfoContainer>
-                : <InfoContainer>
-                  La siguiente aplicación te ayduara a conocer si un número pertenece a la serie de Fibonacci
-                </InfoContainer>
+                  Revisa el número de entrada,
+                  <span>
+                    {warning.message}
+                  </span>
+                </InfoContainer> :
+                fibonacci.showResult ?
+                  <InfoContainer>
+                    El número <span className="result"> 
+                      {fibonacci.number} {!fibonacci.isFibonacci ? 'no' : ''} es fibonacci
+                    </span>
+                  </InfoContainer>
+                  : <InfoContainer>
+                    La siguiente aplicación te ayduara a conocer si un número pertenece a la serie de Fibonacci
+                  </InfoContainer>
             }
             <LabelInput>
-              Introduce{fibonacci.showResult ? ' otro ' : ' un '}número a calcular:
+              Introduce
+              {warning.show ?  ' otro ' : fibonacci.showResult ? ' otro ' : ' un '}
+              número a calcular:
             </LabelInput>
-            <NumberInput type="number" placeholder="E.g 1, 2" onKeyUp={onKeyNumber} min="0" step="1"/>
+            <NumberInput type="number" placeholder="E.g 1, 2" onKeyUp={onKeyNumber} min="0" step="1" />
           </InfoWrapper>
           <MainButtonWrapper>
             <MainButton onClick={onMainButtonClick}>
