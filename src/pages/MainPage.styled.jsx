@@ -27,3 +27,19 @@ export const CardWrapper = styled(MainWrapper)`
     height: 100%;
     width: 100%;
 `;
+export const CardContainer = styled.div`
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    box-shadow: 0 0 15px rgba(112, 112, 112, 0.4);
+`;
+export const CardTitle = styled.h1`
+    color: white;
+    text-align: center;
+    font-weight: 400;
+`;
