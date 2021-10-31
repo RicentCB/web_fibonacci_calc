@@ -1,0 +1,1 @@
+export const ColorDark1 = "rgb(34, 34, 34)";

@@ -8,7 +8,6 @@ export const MainContainer = styled.main`
     height: 100vh;
     width: 100vw;
     position: relative;
-    background-color: black;
 `;
 export const BackgroundContainer = styled.div`
     position: absolute;
@@ -27,6 +26,18 @@ export const CardWrapper = styled(MainWrapper)`
     z-index: 1;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media only screen and (min-width: 500px){
+        padding: 40px 15vw;
+    }
+    @media only screen and (min-width: 768px){
+        padding: 30px 18vw;
+    }
+    @media only screen and (min-width: 1024px){
+        padding: 40px 25vw;
+    }
 `;
 export const CardContainer = styled.div`
     height: 100%;
@@ -36,9 +47,20 @@ export const CardContainer = styled.div`
     backdrop-filter: blur(25px);
     display: flex;
     flex-direction: column;
-    padding: 40px 20px;
     box-shadow: 0 0 15px rgba(39, 39, 39, 0.25);
     justify-content: space-between;
+    padding: 40px 20px;
+    max-height: 550px;
+    @media only screen and (min-width: 500px){
+        padding: 40px 40px;
+    }
+    @media only screen and (min-width: 768px){
+        padding: 50px 70px;
+        max-height: 650px;
+    }
+    @media only screen and (min-width: 1024px){
+        padding: 60px 90px;
+    }
 `;
 export const CardTitle = styled.h1`
     text-align: center;
@@ -72,6 +94,19 @@ export const MainButtonWrapper = styled.div`
     border: 2px solid #ffffff;
     background-color: transparent;
     box-shadow: 0 0 10px rgba(71, 71, 71, 0.75);
+    transition: all ease-in-out 0.25s;
+    width: 100%;
+    &:hover{
+        background-color: #582FED;
+        transform: scale(1.05);
+    }
+    @media only screen and (min-width: 768px){
+        width: 60%;
+        margin: 0 auto;
+    }
+    @media only screen and (min-width: 1024px){
+        width: 50%;
+    }
 `;
 export const MainButton = styled.button`
     color: #ffffff;
@@ -81,4 +116,7 @@ export const MainButton = styled.button`
     padding: 10px 15px;
     height: 100%;
     width: 100%;
+    @media only screen and (min-width: 768px){
+        padding: 12px 15px;
+    }
 `;
