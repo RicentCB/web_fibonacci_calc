@@ -18,7 +18,13 @@ import {
 import BackImg from '../assets/spiral.jpg';
 
 const MainPage = () => {
-  // Alamacenar valor de numero
+  // Objeto para advertencias/validaciones
+  const [warning, setWarning] = useState({
+    message: '',
+    show: false,
+  });
+
+  // Objeto para caluculo de fibonacci
   const [fibonacci, setFibonacci] = useState({
     number: 0,
     isFibonacci: false,
@@ -69,12 +75,36 @@ const MainPage = () => {
   //--------------------------------------------------------
   // Eventos por el usuario
   //--------------------------------------------------------
+  // Mostrar resultado al usuaruo
+  const showResultUser = () => {
+    const number = Number(fibonacci.number);
+    const isFibonacci = isThisFibonacci(number);
+    setFibonacci({
+      ...fibonacci,
+      isFibonacci,
+      showResult: true,
+    });
+  }
 
   // Escribir un numero en el input
   const onKeyNumber = e => {
     if (e.key !== 'Enter') {
       // Alamacenar numero
-      const number = Number.parseInt(e.target.value);
+      const number = Number(e.target.value);
+      if(!Number.isInteger(number)){
+        setWarning({
+          message: 'Solo se permiten numeros enteros',
+          show: true
+        });
+        return;
+      }
+      // Paso todas las validaciones
+      // Ocultar advertencias
+      setWarning({
+        ...warning,
+        show: false,
+      });
+      // Guardar numero
       setFibonacci({
         ...fibonacci,
         number,
@@ -82,23 +112,13 @@ const MainPage = () => {
       });
     } else {
       // Se presiono enter, calcular si es fibonacci
-      const isFibonacci = isThisFibonacci(fibonacci.number);
-      setFibonacci({
-        ...fibonacci,
-        isFibonacci,
-        showResult: true,
-      });
+      showResultUser();
     }
   }
-
+  
   // Hacer click en el boton para calcular
   const onMainButtonClick = e => {
-    const isFibonacci = isThisFibonacci(fibonacci.number);
-    setFibonacci({
-      ...fibonacci,
-      isFibonacci,
-      showResult: true,
-    });
+    showResultUser();
   }
 
   //--------------------------------------------------------
@@ -118,7 +138,7 @@ const MainPage = () => {
             {
               fibonacci.showResult ?
                 <InfoContainer>
-                  El número <span>{fibonacci.number} {fibonacci.isFibonacci ? 'no' : ''} es fibonacci</span>
+                  El número <span>{fibonacci.number} {!fibonacci.isFibonacci ? 'no' : ''} es fibonacci</span>
                 </InfoContainer>
                 : <InfoContainer>
                   La siguiente aplicación te ayduara a conocer si un número pertenece a la serie de Fibonacci
