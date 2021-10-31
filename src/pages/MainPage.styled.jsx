@@ -51,6 +51,7 @@ export const CardContainer = styled.div`
     justify-content: space-between;
     padding: 40px 20px;
     max-height: 550px;
+    transition: all ease-in-out 0.1s;
     @media only screen and (min-width: 500px){
         padding: 40px 40px;
     }
@@ -74,7 +75,7 @@ export const InfoWrapper = styled.div`
     flex-direction: column;
 `;
 export const InfoContainer = styled.p`
-    color: #dfdfdf;
+    color: #f1f1f1;
     text-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
     margin-bottom: 30px;
 `;
@@ -82,7 +83,7 @@ export const LabelInput = styled.label`
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #dfdfdf;
+    color: #f1f1f1;
 `;
 export const NumberInput = styled.input`
     font-size: 1.4rem;
